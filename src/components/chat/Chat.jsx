@@ -7,6 +7,25 @@ import { doc, onSnapshot } from "firebase/firestore";
 import EmojiPicker from "emoji-picker-react";
 import upload from "../../lib/upload";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
+
+const userIDs = [currentUser.id, user.id];
+
+userIDs.forEach(async (id) => {
+  const userChatsRef = doc(db, "userchats", id);
+  const userChatsSnapshot = await getDoc(userChatsRef);
+
+  if (userChatsSnapshot.exists()) {
+    const userChatsData = userChatsSnapshot.data();
+    const chatIndex = userChatsData.chats.findIndex((c) => c.chatId === chatId);
+
+    userChatsData.chats[chatIndex].lastMessage = text;
+    userChatsData.chats[chatIndex].isSeen = id === currentUser.id ? true : false;
+    userChatsData.chats[chatIndex].updatedAt = Date.now();
+
+    await updateDoc(userChatsRef, { chats: userChatsData.chats });
+  }
+});
 
 const handleSend = async () => {
   if (text === "") return;
