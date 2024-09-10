@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCBgZLzEK2CwyZlhYTPp-CrMYwe-nOsr_o",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "smartcampus-chat.firebaseapp.com",
   projectId: "smartcampus-chat",
   storageBucket: "smartcampus-chat.appspot.com",
