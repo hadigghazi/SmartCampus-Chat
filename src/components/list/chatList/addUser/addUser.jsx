@@ -1,6 +1,13 @@
 import "./addUser.css";
 import { db } from "../../../../lib/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { useState } from "react";
 import { useUserStore } from "../../../../lib/userStore";
 
@@ -26,6 +33,40 @@ const AddUser = () => {
     }
   };
 
+  const handleAdd = async () => {
+    const chatRef = collection(db, "chats");
+    const userChatsRef = collection(db, "userchats");
+
+    try {
+      const newChatRef = doc(chatRef);
+
+      await setDoc(newChatRef, {
+        createdAt: serverTimestamp(),
+        messages: [],
+      });
+
+      await updateDoc(doc(userChatsRef, user.id), {
+        chats: arrayUnion({
+          chatId: newChatRef.id,
+          lastMessage: "",
+          receiverId: currentUser.id,
+          updatedAt: Date.now(),
+        }),
+      });
+
+      await updateDoc(doc(userChatsRef, currentUser.id), {
+        chats: arrayUnion({
+          chatId: newChatRef.id,
+          lastMessage: "",
+          receiverId: user.id,
+          updatedAt: Date.now(),
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="addUser">
       <form onSubmit={handleSearch}>
@@ -38,7 +79,7 @@ const AddUser = () => {
             <img src={user.avatar || "./avatar.png"} alt="" />
             <span>{user.username}</span>
           </div>
-          <button>Add User</button>
+          <button onClick={handleAdd}>Add User</button>
         </div>
       )}
     </div>
