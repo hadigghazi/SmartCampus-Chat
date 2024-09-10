@@ -128,7 +128,7 @@ const Chat = () => {
           >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
-              <p>{message.text}</p>
+              <p style={{color: "white"}}>{message.text}</p>
               <span>{format(message.createdAt.toDate())}</span>
             </div>
           </div>
