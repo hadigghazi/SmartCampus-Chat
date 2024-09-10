@@ -58,3 +58,120 @@ button.logout {
   z-index: 1001;
 }
 
+
+@media (min-width: 769px) {
+  .detail {
+    position: relative;
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 250px;
+    height: 100%;
+    z-index: 1000;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .detail.open {
+    right: 0;
+  }
+
+  .info {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .toggle-detail-btn {
+    display: block;
+  }
+}
+
+.detail.open {
+  right: 0;
+}
+
+.user {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #dddddd35;
+}
+
+.user img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+button {
+  padding: 15px;
+  background-color: rgba(230, 74, 105, 0.553);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(220, 20, 60, 0.796);
+}
+
+button.logout {
+  background-color: #1a73e8;
+}
+
+.toggle-detail-btn {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .toggle-detail-btn {
+    display: block;
+  }
+  
+.detail {
+  flex: 1;
+  overflow: auto;
+  position: fixed; 
+  top: 0;
+  right: -100%; 
+  width: 250px;
+  height: 100%;
+  background-color: rgba(17, 25, 40, 0.9);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+}
