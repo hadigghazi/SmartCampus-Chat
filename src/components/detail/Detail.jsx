@@ -5,6 +5,12 @@ import { auth, db } from "../../lib/firebase";
 import { useUserStore } from "../../lib/userStore";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 
+
+const handleLogout = () => {
+  auth.signOut();
+  resetChat();
+};
+
 const handleBlock = async () => {
   if (!user) return;
 
