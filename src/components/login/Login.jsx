@@ -1,11 +1,42 @@
 import { useState } from "react";
 import "./login.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../lib/firebase";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [avatar, setAvatar] = useState({
     file: null,
     url: "",
   });
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const formData = new FormData(e.target);
+    const { username, email, password } = Object.fromEntries(formData);
+  
+    if (!username || !email || !password) {
+      toast.warn("Please enter inputs!");
+      setLoading(false);
+      return;
+    }
+  
+    if (!avatar.file) {
+      toast.warn("Please upload an avatar!");
+      setLoading(false);
+      return;
+    }
+  
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const handleAvatar = (e) => {
     if (e.target.files[0]) {
