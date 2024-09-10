@@ -8,3 +8,47 @@
 .toggle-btn {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .list-container {
+    display: none; 
+    width: 100%;
+    height: 80vh;
+  }
+
+  .list {
+    position: fixed;
+    top: 0;
+    left: -100%; 
+    height: 100%;
+    width: 100%;
+    background-color: rgba(17, 25, 40, 0.75);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  .list-container.open {
+    display: flex; 
+  }
+
+  .list-container.open .list {
+    left: 0; 
+  }
+
+  .toggle-btn {
+    display: block;
+    padding: 10px 20px;
+  color: white;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  position: fixed;
+  top: 10px; 
+  left: 10px; 
+  }
+}
