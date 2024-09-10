@@ -71,6 +71,12 @@
   }
 }
 
+
+p {
+  text-align: center;
+  color: #999;
+}
+
 @media (max-width: 768px) {
   .login {
     gap: 20px;

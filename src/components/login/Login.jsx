@@ -98,6 +98,9 @@ const Login = () => {
   return (
     <div className="login">
       <div className="item">
+        <p>After you create an account and log in, you can search for the following usernames from the Student Affairs team to get help:
+          <br />Chris - Taha - Nour - Jane
+        </p>
         <h2>Welcome back,</h2>
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Email" name="email" />
