@@ -43,9 +43,26 @@ const Detail = () => {
         {isOpen ? "✕" : "☰"}
       </button>
       <div className={`detail ${isOpen ? "open" : ""}`}>
+        <div className="user">
+          <img src={user?.avatar || "./avatar.png"} alt="" />
+          <h2>{user?.username}</h2>
+        </div>
+        <div className="info">
+          <button onClick={handleBlock}>
+            {isCurrentUserBlocked
+              ? "You are Blocked!"
+              : isReceiverBlocked
+              ? "User blocked"
+              : "Block User"}
+          </button>
+          <button className="logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
     </>
   );
+  
 };
 
 export default Detail;
