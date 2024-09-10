@@ -276,3 +276,88 @@
     right: 20px;
   }
 }
+
+@media (max-width: 480px) {
+  .chat .center {
+    padding: 5px;
+  }
+
+  .chat .center .message img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .chat .center .message .texts img {
+    height: 150px;
+    width: 50%;
+  }
+
+  .chat .center .message .texts {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .chat .center .message.own .texts {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .chat .center .message {
+    width: 50%;
+  }
+
+  .chat .bottom {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .chat .bottom .sendButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .chat .bottom .emoji .picker {
+    height: 250px;
+    width: 250px;
+    bottom: 40px;
+    right: 10px;
+  }
+}
+
+.chat .bottom .emoji .picker {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  max-height: 400px; 
+  overflow-y: auto;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: none; 
+}
+
+.chat .bottom .emoji .picker.open {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .chat .bottom .emoji .picker {
+    height: 300px;
+    bottom: 50px;
+    width: 300px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat .bottom .emoji .picker {
+    height: 250px;
+    width: 250px;
+    bottom: 40px;
+    right: 10px;
+  }
+}
