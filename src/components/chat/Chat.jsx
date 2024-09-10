@@ -6,6 +6,33 @@ import { useUserStore } from "../../lib/userStore";
 import { doc, onSnapshot } from "firebase/firestore";
 import EmojiPicker from "emoji-picker-react";
 import upload from "../../lib/upload";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+
+const handleSend = async () => {
+  if (text === "") return;
+
+  let imgUrl = null;
+
+  try {
+    if (img.file) {
+      imgUrl = await upload(img.file);
+    }
+
+    await updateDoc(doc(db, "chats", chatId), {
+      messages: arrayUnion({
+        senderId: currentUser.id,
+        text,
+        createdAt: new Date(),
+        ...(imgUrl && { img: imgUrl }),
+      }),
+    });
+  } catch (err) {
+    console.log(err);
+  } finally {
+    setImg({ file: null, url: "" });
+    setText("");
+  }
+};
 
 const [img, setImg] = useState({ file: null, url: "" });
 
