@@ -3,12 +3,33 @@ import "./login.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { toast } from "react-toastify";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 
 const Login = () => {
   const [avatar, setAvatar] = useState({
     file: null,
     url: "",
   });
+
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+  
+    const formData = new FormData(e.target);
+    const { email, password } = Object.fromEntries(formData);
+  
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.reload(); // Reload after successful login
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
