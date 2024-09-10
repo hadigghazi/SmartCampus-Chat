@@ -3,6 +3,8 @@ import "./chat.css";
 import { db } from "../../lib/firebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
+import { doc, onSnapshot } from "firebase/firestore";
+
 
 const Chat = () => {
   const [chat, setChat] = useState({ messages: [] });
@@ -18,6 +20,22 @@ const Chat = () => {
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat.messages]);
+  
+useEffect(() => {
+  if (chatId) {
+    const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
+      if (res.exists()) {
+        setChat(res.data());
+      } else {
+        setChat({ messages: [] });
+      }
+    });
+
+    return () => {
+      unSub();
+    };
+  }
+}, [chatId]);
 
   return (
     <div className="chat">
