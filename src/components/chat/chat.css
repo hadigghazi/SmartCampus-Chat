@@ -31,6 +31,7 @@
 
 .chat .center .message.own .texts p {
   background-color: #5183fe;
+  text-align: left;
 }
 
 .chat .center .message img {
@@ -58,6 +59,7 @@
   padding: 20px;
   background-color: rgba(17, 25, 40, 0.3);
   border-radius: 10px;
+  text-align: left;
 }
 
 .chat .center .message .texts span {
@@ -123,7 +125,7 @@
 }
 
 .chat .bottom .sendButton {
-  background-color: #5183fe;
+  background-color: #123962;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -132,7 +134,7 @@
 }
 
 .chat .bottom .sendButton:disabled {
-  background-color: #5182feb4;
+  background-color: #123962;
   cursor: not-allowed;
 }
 
@@ -149,7 +151,7 @@
 }
 
 .code-editor-container .editor-container {
-  width: 50%;
+  max-width: 50%;
 }
 
 .input-section {
@@ -179,7 +181,7 @@
   padding: 10px 16px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #123962;
   color: #ffffff;
   font-size: 16px;
   cursor: pointer;
@@ -290,7 +292,7 @@
 
   .chat .center .message .texts img {
     height: 150px;
-    width: 50%;
+    max-width: 50%;
   }
 
   .chat .center .message .texts {
@@ -304,7 +306,7 @@
   }
 
   .chat .center .message {
-    width: 50%;
+    max-width: 50%;
   }
 
   .chat .bottom {

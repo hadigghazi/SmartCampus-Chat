@@ -4,7 +4,6 @@ import {
   arrayUnion,
   collection,
   doc,
-  getDoc,
   getDocs,
   query,
   serverTimestamp,
@@ -27,9 +26,7 @@ const AddUser = () => {
 
     try {
       const userRef = collection(db, "users");
-
       const q = query(userRef, where("username", "==", username));
-
       const querySnapShot = await getDocs(q);
 
       if (!querySnapShot.empty) {
@@ -78,7 +75,7 @@ const AddUser = () => {
     <div className="addUser">
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Username" name="username" />
-        <button>Search</button>
+        <button style={{ backgroundColor: "#123962" }}>Search</button>
       </form>
       {user && (
         <div className="user">
@@ -86,7 +83,9 @@ const AddUser = () => {
             <img src={user.avatar || "./avatar.png"} alt="" />
             <span>{user.username}</span>
           </div>
-          <button onClick={handleAdd}>Add User</button>
+          <button className="add-user-btn" onClick={handleAdd}>
+            <img  style={{width: "20px", height: "20px"}} src="../../plus.png" alt="Add" />
+          </button>
         </div>
       )}
     </div>

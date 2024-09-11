@@ -51,4 +51,7 @@
   top: 10px; 
   left: 10px; 
   }
+  .toggle-btn:hover {
+    background-color: transparent;
+  }
 }
