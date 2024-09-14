@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 100px; 
+  gap: 30px; 
   flex-direction: row; 
 
   .item {
@@ -12,6 +12,8 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    margin-left: 2.3rem;
+    border-bottom: none;
 
     form {
       display: flex;
@@ -72,9 +74,38 @@
 }
 
 
-p {
-  text-align: center;
+.info-icon {
+  margin-left: 8px;
+  cursor: pointer;
   color: #999;
+  font-size: 18px;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 400px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; 
+  left: 50%;
+  margin-left: -200px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -82,6 +113,9 @@ p {
     gap: 20px;
     flex-direction: column-reverse;
     align-items: center; 
+  }
+  .item {
+    margin-left: 0;
   }
   .separator {
     height: 0;

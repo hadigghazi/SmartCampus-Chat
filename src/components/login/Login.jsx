@@ -8,6 +8,8 @@ import {
 import { auth, db } from "../../lib/firebase";
 import { doc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
 import upload from "../../lib/upload";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons"; 
 
 const Login = () => {
   const [avatar, setAvatar] = useState({
@@ -98,8 +100,11 @@ const Login = () => {
   return (
     <div className="login">
       <div className="item">
-        <p>After you create an account and log in, you can search for the following usernames from the Student Affairs team to get help:
-          <br />Chris - Taha - Nour - Jane
+        <p className="tooltip-container">
+            <FontAwesomeIcon icon={faInfoCircle} className="info-icon" />
+            <span className="tooltip-text"> After you create an account and log in, you can search for the following usernames from the Student Affairs team to get help:
+          <br />
+          Chris - Taha - Nour - Jane</span>
         </p>
         <h2>Welcome back,</h2>
         <form onSubmit={handleLogin}>
