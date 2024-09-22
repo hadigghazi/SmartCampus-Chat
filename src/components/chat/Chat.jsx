@@ -118,6 +118,10 @@ const Chat = () => {
 
   return (
     <div className="chat">
+        <div className="chat-header">
+        <img src={user?.avatar || "./avatar.png"} alt="user avatar" className="avatar" />
+        <h2>{user?.username || "User"}</h2>
+      </div>
       <div className="center">
         {chat?.messages?.map((message) => (
           <div
